@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { Users, ArrowLeft, Calendar, Clock, MessageSquare, Video } from 'lucide-react';
 
 import axiosClient from '../../api/axiosClient';
+import { LogoutButton } from './LogoutButton';
 
 export function BookSession() {
   const { id } = useParams();
@@ -72,6 +73,7 @@ export function BookSession() {
               </Link>
             </div>
             <div className="flex items-center gap-4">
+              <LogoutButton className="text-slate-600 hover:text-slate-900" />
               <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
                 JD
               </div>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Users, Target, TrendingUp, Award, Calendar, CheckCircle, MessageSquare } from 'lucide-react';
 import { useChatPanel } from './ChatPanel';
+import { LogoutButton } from './LogoutButton';
 
 export function Progress() {
   const { openChat, ChatPortal } = useChatPanel();
@@ -130,6 +131,7 @@ export function Progress() {
                 <MessageSquare className="w-5 h-5" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
               </button>
+              <LogoutButton className="text-slate-600 hover:text-slate-900" />
               <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
                 JD
               </div>

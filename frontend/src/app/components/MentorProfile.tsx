@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 
 import { useChatPanel } from './ChatPanel';
+import { LogoutButton } from './LogoutButton';
 
 import axiosClient from '../../api/axiosClient';
 
@@ -127,8 +128,11 @@ export function MentorProfile() {
               <Users className="w-6 h-6 text-blue-600" />
               <span className="text-lg font-bold text-slate-900">MentorMatch</span>
             </Link>
-            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
-              AI
+            <div className="flex items-center gap-4">
+              <LogoutButton className="text-slate-600 hover:text-slate-900" />
+              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                AI
+              </div>
             </div>
           </div>
         </div>

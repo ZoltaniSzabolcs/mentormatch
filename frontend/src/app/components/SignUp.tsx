@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Users, GraduationCap, Briefcase } from 'lucide-react';
@@ -13,6 +13,14 @@ export function SignUp() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Ensure each registration starts clean.
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+  }, []);
 
   const handleRoleSelection = (selectedRole: 'mentee' | 'mentor') => {
     setRole(selectedRole);

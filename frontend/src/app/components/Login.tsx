@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Users, Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
@@ -11,6 +11,14 @@ export function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Ensure each login starts clean.
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,8 +36,8 @@ export function Login() {
         password,
       });
       const { token, role } = response.data as { token: string; role: string };
-      localStorage.setItem('token', token);
-      localStorage.setItem('role', role);
+      sessionStorage.setItem('token', token);
+      sessionStorage.setItem('role', role);
       const destination = role === 'MENTOR' ? '/mentor-dashboard' : '/dashboard';
       navigate(destination);
     } catch (err: unknown) {

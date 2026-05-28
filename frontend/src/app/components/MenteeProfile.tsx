@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import axiosClient from '../../api/axiosClient';
+import { LogoutButton } from './LogoutButton';
 
 const imageUrls = [
   'https://images.unsplash.com/photo-1706025090996-63717544be2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400', //man
@@ -150,6 +151,7 @@ export function MenteeProfile() {
             </div>
 
             <div className="flex items-center gap-4">
+              <LogoutButton className="text-slate-600 hover:text-slate-900" />
               <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
                 ER
               </div>

@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import axiosClient from '../../api/axiosClient';
 import { useChatPanel } from './ChatPanel';
+import { LogoutButton } from './LogoutButton';
 
 // --- Types ---
 interface Mentee {
@@ -46,8 +47,8 @@ export function MentorDashboard() {
   const [mentorId, setMentorId] = useState<number | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const role = localStorage.getItem('role');
+    const token = sessionStorage.getItem('token') ?? localStorage.getItem('token');
+    const role = sessionStorage.getItem('role') ?? localStorage.getItem('role');
     
     const storedUserId = localStorage.getItem('userId') || localStorage.getItem('mentorId');
 
@@ -81,7 +82,7 @@ export function MentorDashboard() {
 
   const fetchPendingRequests = async (id: number) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token') ?? localStorage.getItem('token');
       const response = await axiosClient.get(`/sessions/mentor/${id}/pending`, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -98,7 +99,7 @@ export function MentorDashboard() {
   const handleRequestAction = async (sessionId: number, action: 'ACCEPTED' | 'DECLINED') => {
     setActionLoading(sessionId);
     try {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token') ?? localStorage.getItem('token');
       await axiosClient.patch(`/sessions/${sessionId}/status?status=${action}`, null, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -150,6 +151,7 @@ export function MentorDashboard() {
                 <MessageSquare className="w-5 h-5" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
               </button>
+              <LogoutButton className="text-slate-600 hover:text-slate-900" />
               <div className="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
                 MM
               </div>

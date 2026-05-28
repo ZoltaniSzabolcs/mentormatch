@@ -11,3 +11,6 @@
 /.idea/vcs.xml
 
 .DS_Store
+/frontend/.env
+.wrangler
+.dev.vars*
