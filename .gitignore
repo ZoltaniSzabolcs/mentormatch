@@ -1,0 +1,13 @@
+/frontend/node_modules
+/.idea/.gitignore
+/.idea/$PROJECT_FILE$
+/.idea/checkstyle-idea.xml
+/.idea/copilot.data.migration.ask2agent.xml
+/.idea/DISS_Project.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/PMDPlugin.xml
+/.idea/qaplug_profiles.xml
+/.idea/vcs.xml
+
+.DS_Store
